@@ -1,11 +1,13 @@
-import 'dotenv/config';
+// You cannot use the shorthand import here because
+// this file is executed by the drizzle-kit CLI, not in the context of nuxt
+import env from './shared/env'
 import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
-  out: './drizzle',
+  out: './shared/db/migrations',
   schema: './shared/db/schema/*',
   dialect: 'postgresql',
   dbCredentials: {
-    url: process.env.DATABASE_URL!,
+    url: env.DATABASE_URL!,
   },
 });

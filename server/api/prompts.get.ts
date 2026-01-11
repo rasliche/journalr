@@ -1,13 +1,9 @@
-// import { serverSupabaseClient } from '#supabase/server'
+import { db } from '#shared/db/db'
+import { promptTable } from '#shared/db/schema/schema'
 
-export default eventHandler(async (event) => {
-  // const client = await serverSupabaseClient(event)
+export default eventHandler(async () => {
 
-  // const { data } = await client.schema('promptr').from('prompts').select()
-const data = [
-  { id: 1, title: 'Prompt 1', content: 'This is the first prompt.' },
-  { id: 2, title: 'Prompt 2', content: 'This is the second prompt.' },
-  { id: 3, title: 'Prompt 3', content: 'This is the third prompt.' }
-]
-  return { prompts: data }
+  const prompts = await db.select().from(promptTable)
+  console.log(prompts)
+  return prompts
 })

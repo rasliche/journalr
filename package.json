@@ -5,6 +5,8 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "db:up": "docker run --name drizzle-postgres -e POSTGRES_PASSWORD=password -d -p 5432:5432 postgres",
+    "db:clean": "docker stop drizzle-postgres && docker rm drizzle-postgres",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -21,12 +23,14 @@
     "@nuxt/ui": "^4.3.0",
     "better-auth": "^1.4.10",
     "drizzle-orm": "^0.45.1",
+    "drizzle-seed": "^0.3.1",
     "eslint": "^9.39.2",
     "nuxt": "^4.2.2",
     "pg": "^8.16.3",
     "typescript": "^5.9.3",
     "vue": "^3.5.26",
-    "vue-router": "^4.6.4"
+    "vue-router": "^4.6.4",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@types/pg": "^8.16.0",

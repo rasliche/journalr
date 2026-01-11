@@ -1,9 +1,16 @@
-import 'dotenv/config'
+// This import always runs in the context of nuxt, so the # shorthand works
+import env from '#shared/env'
+// import { seed } from "drizzle-seed"
 import { drizzle } from 'drizzle-orm/node-postgres'
 // import { eq } from 'drizzle-orm'
-// import { userTable } from './db/schema'
+// import { promptTable } from './db/schema'
 
-export const db = drizzle(process.env.DATABASE_URL!)
+// async function main() {
+//   await seed(db, { promptTable });
+// }
+// main();
+
+export const db = drizzle(env.DATABASE_URL!);
 
 // async function main() {
 //   const user: typeof userTable.$inferInsert = {
