@@ -1,5 +1,19 @@
 <template>
     <main class="page">
+        <div>
+            <button v-if="!session?.data" @click="() => authClient.signIn.social({
+                provider: 'github'
+            })">
+                Continue with GitHub
+            </button>
+            <div>
+                <pre>{{ session.data }}</pre>
+                <button v-if="session.data" @click="authClient.signOut()">
+                    Sign out
+                </button>
+            </div>
+        </div>
+        
         <header class="header">
             <h1>Journalr</h1>
             <div>
@@ -35,6 +49,8 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
+import { authClient } from '~/utils/auth-client'
+const session = authClient.useSession()
 
 const STORAGE_KEY = 'journalr.entries'
 
