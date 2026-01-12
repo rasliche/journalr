@@ -4,6 +4,5 @@ import { promptTable } from '#shared/db/schema/schema'
 export default eventHandler(async () => {
 
   const prompts = await db.select().from(promptTable)
-  console.log(prompts)
   return prompts
 })
