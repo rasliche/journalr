@@ -2,7 +2,7 @@ import { db } from '#shared/db/db'
 import { promptTable } from '#shared/db/schema/schema'
 
 export default eventHandler(async (event) => {
-  console.log(event)
-  // const prompts = await db.insert().from(promptTable)
-  return { message: 'Hello from prompts POST endpoint' }
+  const body = await readBody(event)
+  const newPrompt = await db.insert(promptTable).values({content: body.content}).returning()
+  return { newPrompt }
 })

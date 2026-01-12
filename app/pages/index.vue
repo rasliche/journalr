@@ -42,30 +42,31 @@
             const response = await $fetch('/api/prompts', {
                 method: 'POST',
                 body: {
-                    content: newPromptContent.value
+                    content: event.data.newPromptContent
                 }
             })
-            console.log('Prompt added:', response)
-            toast.add({ title: 'Success', description: 'Prompt added successfully!', color: 'success' })
+            prompts.value.push(response.newPrompt[0])
+            toast.add({ title: 'Success', description: 'Your prompt has been submitted!', color: 'success' })
          } catch (error) {
             toast.add({ title: 'Oops?', description: 'Failed to add prompt.', color: 'info' })
         }
     }
-    const prompts = await $fetch('/api/prompts')
+
+    const prompts = ref()
+    prompts.value = await $fetch('/api/prompts')
 
 
-    const newPromptContent = ref('')
-    const handleFormSubmit = async () => {
-        try {
-            const response = await $fetch('/api/prompts', {
-                method: 'POST',
-                body: {
-                    content: newPromptContent.value
-                }
-            })
-            console.log('Prompt added:', response)
-        } catch (error) {
-            console.error('Error adding prompt:', error)
-        }
-    }
+    // const handleFormSubmit = async () => {
+    //     try {
+    //         const response = await $fetch('/api/prompts', {
+    //             method: 'POST',
+    //             body: {
+    //                 content: newPromptContent.value
+    //             }
+    //         })
+    //         console.log('Prompt added:', response)
+    //     } catch (error) {
+    //         console.error('Error adding prompt:', error)
+    //     }
+    // }
 </script>
