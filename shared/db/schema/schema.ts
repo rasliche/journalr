@@ -8,7 +8,6 @@ export const promptTable = pgTable("prompt", {
   // authorId: uuid().references(() => user.id).notNull(),
 });
 
-
 export const responseTable = pgTable("response", {
   id: uuid().primaryKey().defaultRandom(),
   content: text().notNull(),
