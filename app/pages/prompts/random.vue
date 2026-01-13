@@ -1,8 +1,8 @@
 <template>
   <div>
     Get a random prompt.   
-    {{ prompt?.content }}
-    <h3>Options</h3>
+    <p class="text-xl">{{ prompt?.content }}</p>
+    <p>Options</p>
     <ul>
       <li>Upvote</li>
       <li>Respond</li>

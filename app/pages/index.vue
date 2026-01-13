@@ -9,7 +9,7 @@
                     <!-- <div class="meta">
                         <time class="date">{{ prompt.createdAt }}</time>
                     </div> -->
-                    <p>{{ prompt.content }}</p>
+                    <ULink :to="`/prompts/${prompt.id}`">{{ prompt.content }}</ULink>
                 </div>
             </div>
         </UPageSection>
