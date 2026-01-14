@@ -1,5 +1,5 @@
 import { db } from '#shared/db/db'
-import { promptTable } from '#shared/db/schema/schema'
+import { promptTable } from '#shared/db/schema'
 import { sql } from 'drizzle-orm'
 
 export default eventHandler(async () => {
