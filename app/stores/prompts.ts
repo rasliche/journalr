@@ -1,6 +1,9 @@
+
+
 export const usePromptStore = defineStore('promptStore', {
   state: () => ({
     prompts: [] as Array<{ id: string; content: string }>,
+    totalPromptsInSystem: 0
   }),
   actions: {
     async fetchPrompts() {
